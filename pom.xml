@@ -5,7 +5,7 @@
 	<artifactId>ansj_seg</artifactId>
 	<packaging>jar</packaging>
 	<name>ansj_seg</name>
-	<version>5.1.6</version>
+	<version>5.1.7</version>
 	<description>best java chinese word seg ! </description>
 	<url>https://github.com/NLPchina/ansj_seg</url>
 	<licenses>
@@ -140,17 +140,18 @@
 		</plugins>
 	</build>
 
+
 	<distributionManagement>
 		<snapshotRepository>
-			<id>sonatype-nexus-snapshots</id>
-			<name>Sonatype Nexus snapshot repository</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<id>Malicn_Snapshots</id>
+			<name>Bms-base Project Snapshot</name>
+			<url>http://58.34.210.180:8081/repository/Malicn_Snapshots/</url>
+			<uniqueVersion>true</uniqueVersion>
 		</snapshotRepository>
-
 		<repository>
-			<id>sonatype-nexus-staging</id>
-			<name>Sonatype Nexus release repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+			<id>Malicn_Release</id>
+			<name>Bms-base Project Release</name>
+			<url>http://58.34.210.180:8081/repository/Malicn_Release/</url>
 		</repository>
 	</distributionManagement>
 </project>

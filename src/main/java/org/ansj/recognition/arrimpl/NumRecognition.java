@@ -77,7 +77,7 @@ public class NumRecognition implements TermArrRecognition {
 				continue;
 			}
 
-			if (!temp.termNatures().numAttr.isNum()) {
+			if (!temp.termNatures().numAttr.isNum() && !(temp.getNatureStr().endsWith("PlantNo") && "".equals(temp.getName().replaceAll("[0-9]", "")))) {
 				continue;
 			}
 

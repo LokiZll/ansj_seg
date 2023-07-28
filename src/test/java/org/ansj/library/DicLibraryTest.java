@@ -3,15 +3,20 @@ package org.ansj.library;
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
 import org.ansj.splitWord.analysis.DicAnalysis;
+import org.ansj.util.MyStaticValue;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.nlpcn.commons.lang.tire.domain.Forest;
 
+import java.util.List;
+
 public class DicLibraryTest {
 
 	@Before
 	public void init(){
+		MyStaticValue.ENV.put(DicLibrary.DEFAULT,"library/userLibrary.dic");
+		MyStaticValue.ENV.put(DicLibrary.DEFAULT,"library/beefCountryLibrary.dic");
 		Forest forest = DicLibrary.get();
 		if(forest==null){
 			DicLibrary.put(DicLibrary.DEFAULT,DicLibrary.DEFAULT,new Forest());
@@ -80,6 +85,18 @@ public class DicLibraryTest {
 		DicLibrary.put(key, key, new Forest());
 		DicLibrary.insert(key, "增加新词", "我是词性", 1000);
 		Result parse = DicAnalysis.parse("这是用户自定义词典增加新词的例子",DicLibrary.gets(key));
+		System.out.println(parse);
+		boolean flag = false;
+		for (Term term : parse) {
+			flag = flag || "增加新词".equals(term.getName());
+		}
+		Assert.assertTrue(flag);
+	}
+
+	@Test
+	public void libraryTest(){
+		Result parse = DicAnalysis.parse("阿根廷3676上脑盖");
+//		List<Term> termList = DicAnalysis.parse("阿根廷3676上脑盖").getTerms();
 		System.out.println(parse);
 		boolean flag = false;
 		for (Term term : parse) {

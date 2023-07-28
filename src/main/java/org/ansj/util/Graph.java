@@ -28,6 +28,8 @@ public class Graph {
 	public boolean hasPerson;
 
 	public boolean hasNumQua;
+	//是否有厂号
+	public boolean hasPlantNo;
 
 	public String str ;
 
@@ -77,6 +79,11 @@ public class Graph {
 		if (!hasNumQua && term.termNatures().numAttr.isQua()) {
 			hasNumQua = true;
 		}
+
+		if(!hasPlantNo && term.getNatureStr().endsWith("PlantNo")){
+			hasPlantNo = true;
+		}
+
 		TermUtil.insertTerm(terms, term, InsertTermType.REPLACE);
 
 	}

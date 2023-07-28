@@ -6,7 +6,6 @@ import org.ansj.domain.TermNature;
 import org.ansj.domain.TermNatures;
 import org.ansj.recognition.arrimpl.NumRecognition;
 import org.ansj.recognition.arrimpl.PersonRecognition;
-import org.ansj.recognition.arrimpl.UserDefineRecognition;
 import org.ansj.splitWord.Analysis;
 import org.ansj.util.AnsjReader;
 import org.ansj.util.Graph;
@@ -40,7 +39,7 @@ public class DicAnalysis extends Analysis {
 
 				// 数字发现
 				if (isNumRecognition) {
-					new NumRecognition(isQuantifierRecognition && graph.hasNumQua).recognition(graph);
+					new NumRecognition(isQuantifierRecognition && (graph.hasNumQua || graph.hasPlantNo)).recognition(graph);
 				}
 
 				// 姓名识别
