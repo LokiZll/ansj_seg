@@ -1,5 +1,6 @@
 package org.ansj.recognition.arrimpl;
 
+import org.ansj.domain.NumNatureAttr;
 import org.ansj.domain.Term;
 import org.ansj.domain.TermNatures;
 import org.ansj.recognition.TermArrRecognition;
@@ -103,6 +104,18 @@ public class NumRecognition implements TermArrRecognition {
 					terms[temp.to().getOffe()] = null ;
 					terms[temp.to().to().getOffe()] = null ;
 					TermUtil.termLink(temp, temp.to().to().to());
+					i = temp.getOffe() - 1;
+				}
+			}
+
+			if(temp.getNatureStr().endsWith("PlantNo")){
+				if(!temp.from().getName().equals(".") && temp.to().getName().equals(".")&&temp.to().to().termNatures()==TermNatures.M_ALB&&!temp.to().to().to().getName().equals(".")){
+					temp.setName(temp.getName()+temp.to().getName()+temp.to().to().getName());
+					terms[temp.to().getOffe()] = null ;
+					terms[temp.to().to().getOffe()] = null ;
+					TermUtil.termLink(temp, temp.to().to().to());
+					temp.setNature(TermNatures.M.nature);
+					temp.termNatures().numAttr=NumNatureAttr.NUM;
 					i = temp.getOffe() - 1;
 				}
 			}
