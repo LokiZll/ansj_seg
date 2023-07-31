@@ -28,6 +28,7 @@ public class TermNature implements Serializable{
 	public static final TermNature NW = new TermNature("nw", 1);
 	public static final TermNature NRF = new TermNature("nrf", 1);
 	public static final TermNature NULL = new TermNature("null", 1);
+	public static final TermNature PRICE = new TermNature("price", 1);
 
 	public Nature nature;
 

@@ -15,6 +15,18 @@ public class NumRecognition implements TermArrRecognition {
 	public static final Set<Character> j_NUM = new HashSet<>();
 	public static final Set<Character> f_NUM = new HashSet<>();
 
+	public static final Set<String> PRICE_UNIT = new HashSet<>();
+
+	static {
+		PRICE_UNIT.add("元");
+		PRICE_UNIT.add("美金");
+		PRICE_UNIT.add("美元");
+		PRICE_UNIT.add("￥");
+		PRICE_UNIT.add("usd");
+		PRICE_UNIT.add("USD");
+		PRICE_UNIT.add("$");
+	};
+
 	static {
 		j_NUM.add('零');
 		j_NUM.add('一');
@@ -123,6 +135,12 @@ public class NumRecognition implements TermArrRecognition {
 
             if (quantifierRecognition) { //开启量词识别
                 to = temp.to();
+				if(PRICE_UNIT.contains(temp.to().getName())){
+					terms[temp.getOffe()] = TermUtil.makeNewTermNum(temp,temp.to(),TermNatures.PRICE);
+					i = to.getOffe();
+					continue;
+				}
+
                 if (to.termNatures().numAttr.isQua()) {
                     linkTwoTerms(terms, temp, to);
                     temp.setNature(to.termNatures().numAttr.nature);

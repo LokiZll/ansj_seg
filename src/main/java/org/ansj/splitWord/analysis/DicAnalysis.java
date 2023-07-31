@@ -42,6 +42,8 @@ public class DicAnalysis extends Analysis {
 					new NumRecognition(isQuantifierRecognition && (graph.hasNumQua || graph.hasPlantNo)).recognition(graph);
 				}
 
+//				new PriceRecognition().recognition(graph);
+
 				// 姓名识别
 				if (graph.hasPerson && isNameRecognition) {
 					// 人名识别
