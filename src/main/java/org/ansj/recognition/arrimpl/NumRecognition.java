@@ -15,16 +15,31 @@ public class NumRecognition implements TermArrRecognition {
 	public static final Set<Character> j_NUM = new HashSet<>();
 	public static final Set<Character> f_NUM = new HashSet<>();
 
+	//价格单位
 	public static final Set<String> PRICE_UNIT = new HashSet<>();
+	//价格单位前缀
+	public static final Set<String> PRICE_UNIT_PREFIX = new HashSet<>();
+
+	//重量单位
+	public static final Set<String> WEIGHT_UNIT = new HashSet<>();
+
 
 	static {
 		PRICE_UNIT.add("元");
 		PRICE_UNIT.add("美金");
 		PRICE_UNIT.add("美元");
-		PRICE_UNIT.add("￥");
 		PRICE_UNIT.add("usd");
 		PRICE_UNIT.add("USD");
-		PRICE_UNIT.add("$");
+		PRICE_UNIT_PREFIX.add("￥");
+		PRICE_UNIT_PREFIX.add("$");
+
+		WEIGHT_UNIT.add("柜");
+		WEIGHT_UNIT.add("件");
+		WEIGHT_UNIT.add("吨");
+		WEIGHT_UNIT.add("千克");
+		WEIGHT_UNIT.add("KG");
+		WEIGHT_UNIT.add("kg");
+		WEIGHT_UNIT.add("Kg");
 	};
 
 	static {
@@ -135,11 +150,26 @@ public class NumRecognition implements TermArrRecognition {
 
             if (quantifierRecognition) { //开启量词识别
                 to = temp.to();
+				//自定义识别 start
 				if(PRICE_UNIT.contains(temp.to().getName())){
 					terms[temp.getOffe()] = TermUtil.makeNewTermNum(temp,temp.to(),TermNatures.PRICE);
 					i = to.getOffe();
 					continue;
 				}
+
+				if(PRICE_UNIT_PREFIX.contains(temp.from().getName())){
+					terms[temp.from().getOffe()] = TermUtil.makeNewTermNum(temp.from(),temp,TermNatures.PRICE);
+					i = temp.getOffe();
+					continue;
+				}
+
+				if(WEIGHT_UNIT.contains(temp.to().getName())){
+					terms[temp.getOffe()] = TermUtil.makeNewTermNum(temp,temp.to(),TermNatures.WEIGHT);
+					i = to.getOffe();
+					continue;
+				}
+				//自定义识别 end
+
 
                 if (to.termNatures().numAttr.isQua()) {
                     linkTwoTerms(terms, temp, to);

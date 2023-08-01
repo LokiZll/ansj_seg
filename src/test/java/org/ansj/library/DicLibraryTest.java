@@ -94,7 +94,7 @@ public class DicLibraryTest {
 
 	@Test
 	public void libraryTest(){
-		Result parse = DicAnalysis.parse("100.1元 100.1美金 100.1美元 100.1￥ 100.1usd 100.1$");
+		Result parse = DicAnalysis.parse("肩胛229件\n");
 //		Result parse = DicAnalysis.parse("1014 1.1 八件套天津一柜");
 //		List<Term> termList = DicAnalysis.parse("阿根廷3676上脑盖").getTerms();
 		System.out.println(parse);

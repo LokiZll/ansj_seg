@@ -36,6 +36,8 @@ public class TermNatures implements Serializable {
 	public static final TermNatures NULL = new TermNatures(TermNature.NULL);
 
 	public static final TermNatures PRICE = new TermNatures(TermNature.PRICE);
+
+	public static final TermNatures WEIGHT = new TermNatures(TermNature.WEIGHT);
 	;
 
 	/**
