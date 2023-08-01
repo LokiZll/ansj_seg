@@ -1,5 +1,6 @@
 package org.ansj.library;
 
+import org.ansj.dic.DicReader;
 import org.ansj.dic.PathToStream;
 import org.ansj.domain.KV;
 import org.ansj.util.MyStaticValue;
@@ -80,7 +81,7 @@ public class SynonymsLibrary {
 		LOG.debug("begin init synonyms " + kv.getK());
 		long start = System.currentTimeMillis();
 
-		try (BufferedReader reader = IOUtil.getReader(PathToStream.stream(kv.getK()), IOUtil.UTF8)) {
+		try (BufferedReader reader = DicReader.getReader(kv.getK())) {
 			String temp = null;
 			while ((temp = reader.readLine()) != null) {
 				if (StringUtil.isBlank(temp)) {

@@ -1,5 +1,6 @@
 package org.ansj.library;
 
+import org.ansj.dic.DicReader;
 import org.ansj.dic.PathToStream;
 import org.ansj.domain.KV;
 import org.ansj.util.MyStaticValue;
@@ -39,7 +40,6 @@ public class DicLibrary {
 				put(entry.getKey(), entry.getValue());
 			}
 		}
-		putIfAbsent(DEFAULT, "library/default.dic");
 
 		Forest forest = get();
 		if (forest == null) {
@@ -195,7 +195,7 @@ public class DicLibrary {
 			String temp = null;
 			String[] strs = null;
 			Value value = null;
-			try (BufferedReader br = IOUtil.getReader(PathToStream.stream(kv.getK()), "UTF-8")) {
+			try (BufferedReader br = DicReader.getReader(kv.getK())) {
 				while ((temp = br.readLine()) != null) {
 					if (StringUtil.isNotBlank(temp)) {
 						temp = StringUtil.trim(temp);
