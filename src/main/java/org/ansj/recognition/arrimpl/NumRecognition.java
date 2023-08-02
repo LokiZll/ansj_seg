@@ -179,7 +179,7 @@ public class NumRecognition implements TermArrRecognition {
 				//自定义识别 end
 
 
-                if (to.termNatures().numAttr.isQua() && !to.getRealName().equals("前")) {
+                if (to.termNatures().numAttr.isQua()) {
                     linkTwoTerms(terms, temp, to);
                     temp.setNature(to.termNatures().numAttr.nature);
 

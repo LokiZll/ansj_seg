@@ -84,6 +84,10 @@ public class Graph {
 			hasPlantNo = true;
 		}
 
+		if(term.getRealName().equals("前")||!term.getRealName().equals("肩")){
+			term.termNatures().numAttr.setQua(Boolean.FALSE);
+		}
+
 		TermUtil.insertTerm(terms, term, InsertTermType.REPLACE);
 
 	}
