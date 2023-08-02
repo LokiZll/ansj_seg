@@ -94,7 +94,7 @@ public class DicLibraryTest {
 
 	@Test
 	public void libraryTest(){
-		Result parse = DicAnalysis.parse("肩胛229件\n");
+		Result parse = DicAnalysis.parse("前腱￥55  肩肋$42.5");
 //		Result parse = DicAnalysis.parse("1014 1.1 八件套天津一柜");
 //		List<Term> termList = DicAnalysis.parse("阿根廷3676上脑盖").getTerms();
 		System.out.println(parse);

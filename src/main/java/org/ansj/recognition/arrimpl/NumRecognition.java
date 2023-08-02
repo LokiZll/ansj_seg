@@ -2,6 +2,7 @@ package org.ansj.recognition.arrimpl;
 
 import org.ansj.domain.NumNatureAttr;
 import org.ansj.domain.Term;
+import org.ansj.domain.TermNature;
 import org.ansj.domain.TermNatures;
 import org.ansj.recognition.TermArrRecognition;
 import org.ansj.util.Graph;
@@ -166,6 +167,7 @@ public class NumRecognition implements TermArrRecognition {
 				if(PRICE_UNIT_PREFIX.contains(temp.from().getName())){
 					terms[temp.from().getOffe()] = TermUtil.makeNewTermNum(temp.from(),temp,TermNatures.PRICE);
 					i = temp.getOffe();
+					terms[temp.getOffe()] = null;
 					continue;
 				}
 
