@@ -126,7 +126,10 @@ public class NumRecognition implements TermArrRecognition {
 
 
 			if (temp.termNatures() == TermNatures.M_ALB) { //阿拉伯数字
-				if(!temp.from().getName().equals(".") && temp.to().getName().equals(".")&&temp.to().to().termNatures()==TermNatures.M_ALB&&!temp.to().to().to().getName().equals(".")){
+				if(!temp.from().getName().equals(".")
+						&& temp.to().getName().equals(".")
+						&&(temp.to().to().termNatures()==TermNatures.M_ALB || (temp.to().to().getNatureStr().endsWith("PlantNo")))
+						&&!temp.to().to().to().getName().equals(".")){
 					temp.setName(temp.getName()+temp.to().getName()+temp.to().to().getName());
 					terms[temp.to().getOffe()] = null ;
 					terms[temp.to().to().getOffe()] = null ;
@@ -136,7 +139,10 @@ public class NumRecognition implements TermArrRecognition {
 			}
 
 			if(temp.getNatureStr().endsWith("PlantNo")){
-				if(!temp.from().getName().equals(".") && temp.to().getName().equals(".")&&temp.to().to().termNatures()==TermNatures.M_ALB&&!temp.to().to().to().getName().equals(".")){
+				if(!temp.from().getName().equals(".")
+						&& temp.to().getName().equals(".")
+						&&(temp.to().to().termNatures()==TermNatures.M_ALB || (temp.to().to().getNatureStr().endsWith("PlantNo")))
+						&&!temp.to().to().to().getName().equals(".")){
 					temp.setName(temp.getName()+temp.to().getName()+temp.to().to().getName());
 					terms[temp.to().getOffe()] = null ;
 					terms[temp.to().to().getOffe()] = null ;
@@ -171,7 +177,7 @@ public class NumRecognition implements TermArrRecognition {
 				//自定义识别 end
 
 
-                if (to.termNatures().numAttr.isQua()) {
+                if (to.termNatures().numAttr.isQua() && !to.getRealName().equals("前")) {
                     linkTwoTerms(terms, temp, to);
                     temp.setNature(to.termNatures().numAttr.nature);
 
