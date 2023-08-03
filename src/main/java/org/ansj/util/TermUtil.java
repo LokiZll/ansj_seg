@@ -8,6 +8,7 @@ import org.ansj.library.NatureLibrary;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * term的操作类
@@ -117,6 +118,7 @@ public class TermUtil {
 
 	public static void insertTerm(Term[] terms, List<Term> tempList, TermNatures tns) {
 		StringBuilder sb = new StringBuilder();
+		tempList = tempList.stream().filter(term -> term!=null).collect(Collectors.toList());
 		for (Term term : tempList) {
 			sb.append(term.getName());
 			terms[term.getOffe()] = null;

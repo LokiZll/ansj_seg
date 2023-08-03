@@ -84,7 +84,10 @@ public class Graph {
 			hasPlantNo = true;
 		}
 
-		if(term.getRealName().equals("前")||term.getRealName().equals("肩")){
+		if(term.getRealName().equals("前")
+				||term.getRealName().equals("肩")
+				||term.getRealName().equals("牛")
+			){
 			term.termNatures().numAttr.setQua(Boolean.FALSE);
 		}
 

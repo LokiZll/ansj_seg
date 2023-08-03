@@ -160,6 +160,7 @@ public class NumRecognition implements TermArrRecognition {
 				//自定义识别 start
 				if(PRICE_UNIT.contains(temp.to().getName())){
 					terms[temp.getOffe()] = TermUtil.makeNewTermNum(temp,temp.to(),TermNatures.PRICE);
+					terms[temp.to().getOffe()] = null;
 					i = to.getOffe();
 					continue;
 				}
@@ -173,6 +174,7 @@ public class NumRecognition implements TermArrRecognition {
 
 				if(WEIGHT_UNIT.contains(temp.to().getName())){
 					terms[temp.getOffe()] = TermUtil.makeNewTermNum(temp,temp.to(),TermNatures.WEIGHT);
+					terms[temp.to().getOffe()] = null;
 					i = to.getOffe();
 					continue;
 				}
