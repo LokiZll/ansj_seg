@@ -39,7 +39,7 @@ public class DicAnalysis extends Analysis {
 
 				// 数字发现
 				if (isNumRecognition) {
-					new NumRecognition(isQuantifierRecognition && (graph.hasNumQua || graph.hasPlantNo)).recognition(graph);
+					new NumRecognition(isQuantifierRecognition).recognition(graph);
 				}
 
 //				new PriceRecognition().recognition(graph);

@@ -35,6 +35,7 @@ public class NumRecognition implements TermArrRecognition {
 		PRICE_UNIT_PREFIX.add("$");
 
 		WEIGHT_UNIT.add("柜");
+		WEIGHT_UNIT.add("箱");
 		WEIGHT_UNIT.add("件");
 		WEIGHT_UNIT.add("吨");
 		WEIGHT_UNIT.add("千克");

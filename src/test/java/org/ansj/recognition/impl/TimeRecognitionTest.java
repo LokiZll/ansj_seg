@@ -10,7 +10,7 @@ public class TimeRecognitionTest {
 		
 		TimeRecognition timeRecognition = new TimeRecognition() ;
 		
-		System.out.println(ToAnalysis.parse("5.1.3版本日期标注问题，2017年9月1日").recognition(timeRecognition));
+		System.out.println(ToAnalysis.parse("5.1.3版本日期标注问题，8月12").recognition(timeRecognition));
 		
 		
 	}
